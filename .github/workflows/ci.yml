@@ -1,0 +1,24 @@
+name: Angular Final Project
+on:
+  push:
+    branches: ["main"]
+  workflow_dispatch:
+jobs:
+  test_and_build:
+    name: Test and Build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v4 #this installs node and npm for us
+        with:
+          node-version: '22.x'
+      - uses: actions/cache@v4
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-    
+      - name: Build and Test App
+        run: |
+          npm install
+          npm run test
