@@ -21,10 +21,9 @@ jobs:
       - name: Build and Test App
         run: |
           npm install
+          npm build
           npm run test:ci
-      - name: Publish Artifact
-        run: mkdir artifacts && cp dist/* artifacts
       - uses: actions/upload-artifact@v4
         with:
           name: Package
-          path: artifacts
+          path: dist
