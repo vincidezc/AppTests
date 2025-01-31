@@ -22,3 +22,9 @@ jobs:
         run: |
           npm install
           npm run test:ci
+      - name: Publish Artifact
+        run: mkdir artifacts && cp dist/* artifacts
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Package
+          path: artifacts
