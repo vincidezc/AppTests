@@ -19,6 +19,7 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "test:ci": "ng test --no-watch",
+    "ci": "ng build && ng test --no-watch",
     "serve:ssr:final-project": "node dist/final-project/server/server.mjs"
   },
   "private": true,
